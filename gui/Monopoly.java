@@ -18,6 +18,9 @@ public class Monopoly extends JFrame
 		
 		//Do you want to be able to see the Frame?
 		frame.setVisible(true);
+		
+		//Do not allow the window size to be changed
+		frame.setResizable(false);
 	}
 	
 	public Monopoly()
