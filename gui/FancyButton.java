@@ -69,22 +69,35 @@ public class FancyButton
 	    	case 5: diceB.setIcon(a5); break;
 	    	case 6: diceB.setIcon(a6); break;
     	}
-    	int move = roll + roll2, moveX = 0, moveY = 0;
+    	int move = roll + roll2;
     	while(move > 0){
-			System.out.println(moveX + " " + moveY);
     		if((int)state.getPoint().getX() > 106 && (int)state.getPoint().getY() == 485)
-    			moveX -= 41;
+    			state.setPoint(new Point((int)state.getPoint().getX() - 41, (int)state.getPoint().getY()));
     		else if((int)state.getPoint().getX() < 106 && (int)state.getPoint().getX() > 65 && (int)state.getPoint().getY() == 485)
-    			moveX -= 65;
+    			state.setPoint(new Point((int)state.getPoint().getX() - 65, (int)state.getPoint().getY()));
     		else if((int)state.getPoint().getX() < 65 && (int)state.getPoint().getY() == 485)
-    			moveY -= 65;
+    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() - 65));
     		else if((int)state.getPoint().getX() < 65 && (int)state.getPoint().getY() > 106)
-    			moveY -= 41;
+    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() - 41));
     		else if((int)state.getPoint().getX() < 65 && (int)state.getPoint().getY() < 106 && (int)state.getPoint().getY() > 65)
-    			moveY -= 100;
+    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() - 90));
+    		else if((int)state.getPoint().getX() < 65 && (int)state.getPoint().getY() < 65)
+    			state.setPoint(new Point((int)state.getPoint().getX() + 65, (int)state.getPoint().getY()));
+    		else if((int)state.getPoint().getX() > 65 && (int)state.getPoint().getY() < 65 && (int)state.getPoint().getX() < 393)
+    			state.setPoint(new Point((int)state.getPoint().getX() + 41, (int)state.getPoint().getY()));
+    		else if((int)state.getPoint().getX() > 394 && (int)state.getPoint().getX() < 436 && (int)state.getPoint().getY() < 65)
+    			state.setPoint(new Point((int)state.getPoint().getX() + 65, (int)state.getPoint().getY()));
+    		else if((int)state.getPoint().getX() > 436 && (int)state.getPoint().getY() < 65)
+    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() + 65));
+    		else if((int)state.getPoint().getX() > 436 && (int)state.getPoint().getY() < 393)
+    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() + 41));
+    		else if((int)state.getPoint().getX() > 436 && (int)state.getPoint().getY() < 393)
+    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() + 41));
+    		else if((int)state.getPoint().getX() > 436 && (int)state.getPoint().getY() > 393 && (int)state.getPoint().getY() < 434)
+    			state.setPoint(new Point(436, 485));
+    		System.out.println((int)state.getPoint().getX() + "," + (int)state.getPoint().getY());
     		move--;
     	}
-    	state.setPoint(new Point((int)state.getPoint().getX() + moveX, (int)state.getPoint().getY() + moveY));
     	board.repaint();
     	if(roll == roll2)
     	{
