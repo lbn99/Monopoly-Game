@@ -53,10 +53,10 @@ public class Monopoly extends JFrame
 		panel2.add(cardMessage, BorderLayout.NORTH);
 		cardMessage.setEditable(false);
 		
-		ImageIcon b = new ImageIcon("../dice1.png");
+		ImageIcon b = new ImageIcon("../blank.png");
 		JLabel dice1 = new JLabel(b);
 	
-		ImageIcon c = new ImageIcon("../dice1.png");
+		ImageIcon c = new ImageIcon("../blank.png");
 		JLabel dice2 = new JLabel(c);
 		
 		JButton roll = new FancyButton("Roll", dice1, dice2, cardMessage, board, state);
