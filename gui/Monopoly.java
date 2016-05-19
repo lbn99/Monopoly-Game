@@ -9,24 +9,24 @@ public class Monopoly extends JFrame
 		Scanner input = new Scanner(System.in);
 		//Create a Frame to hold everything
 		Monopoly frame = new Monopoly("Monopoly!");
-		
-		//Clicking the [X] button stops your program
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//how big should hte JFrame be?
-		frame.setSize(750, 700);
-		
-		//Do you want to be able to see the Frame?
-		frame.setVisible(true);
-		
-		//Do not allow window size to be changed
-		frame.setResizable(false);
 	}
 	
 	public Monopoly(String title)
 	{
 		//Set the title for the window
 		super(title);
+		
+		//close when [x] is pressed
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//how big should hte JFrame be?
+		setSize(750, 700);
+		
+		//Do you want to be able to see the Frame?
+		setVisible(true);
+		
+		//Do not allow window size to be changed
+		setResizable(false);
 		
 		//Set the layout of this Frame
 		setLayout(new BorderLayout());
