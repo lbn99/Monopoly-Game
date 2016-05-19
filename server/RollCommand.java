@@ -19,10 +19,23 @@ class RollCommand extends NetworkListenerAdapter
 			int newx = 0;
 			int newy = 0;
 			
+			//collecting rent
 			if!(landedOn.available())
 			{
 				player.transact(landedOn.getRent()*-1);
 				landedOn.getOwner().transact(landedOn.getRent());
+			}
+			
+			//Display community chest message and do functions
+			if(landedOn.getType().equals("CC"))
+			{
+				
+			}
+			
+			//Display cchance card message and do functions
+			if(landedOn.getType().equals("Chance"))
+			{
+				
 			}
 			
 			//process for horizontal and verticals sides and assigning new positions
