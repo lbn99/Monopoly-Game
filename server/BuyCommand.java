@@ -8,7 +8,12 @@ class BuyCommand extends NetworkListenerAdapter
 	{
 		if(isCommand(message, COMMAND))
 		{
-			//buy process code goes here
+			if(player.getTurn()){
+				//buy process code goes here
+				IPropertyCard landedOn = server.getCardAt(player.getCardOn());
+				landedOn.setOwner(player.getHandle());
+				player.send("BUY " + landedOn.getName() + " - Cost: " + landedOn.getCost() + " Rent - " + landedOn.getRent());
+			}
 		}
 	}
 }

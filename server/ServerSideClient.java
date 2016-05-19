@@ -1,7 +1,7 @@
 import java.net.*;
 import java.util.*;
 import java.io.*;
-
+/*
 public class ServerSideClient implements Runnable, IPlayer
 {
 	private String handle;
@@ -122,3 +122,4 @@ public class ServerSideClient implements Runnable, IPlayer
 	public void buy(IPropertyCard p){
 	}
 }
+*/

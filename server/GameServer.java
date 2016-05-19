@@ -134,4 +134,8 @@ public class GameServer implements Runnable, IServer
     public IPropertyCard getCardAt(int i){
         return propertyList.get(i);
     }
+	
+	public IPlayer getNext(){
+		return playerList.getNext();
+	}
 }

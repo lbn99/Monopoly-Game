@@ -1,7 +1,7 @@
 import java.net.*;
 import java.util.*;
 import java.io.*;
-
+/*
 public class Server implements Runnable, IServer
 {
 	private int port; 
@@ -70,3 +70,4 @@ public class Server implements Runnable, IServer
     }
     public int nextID(){ return id++; }
 }
+*/

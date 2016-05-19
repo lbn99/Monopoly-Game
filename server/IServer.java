@@ -16,4 +16,8 @@ interface IServer
 	public void stop();
 	
 	public IPlayer[] getClients();
+	
+	public IPropertyCard getCardAt(int i);
+	
+	public IPlayer getNext();
 }
