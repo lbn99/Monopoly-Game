@@ -87,8 +87,9 @@ public class GameServer implements Runnable, IServer
    	public void addListeners(IPlayer p){
    		p.addNetworkListener(new BuyCommand());
    	}
+
    	public void init(){
- 		propertyList.add(new PropertyCard("Go",200,Color.WHITE, false, 0, new Point(435,435), 65,65, new int[0], "Other",0));
+ 		propertyList.add(new PropertyCard("Go",200,Color.WHITE, false, 0, new Point(435,435), 65,65, new int[0], "Corner",0));
  		propertyList.add(new PropertyCard("Mediterranean Ave.",60,Color.MAGENTA, true, 2, new Point(394,435), 41,65, new int[]{10,30,90,160,250}, "Monopoly",1));
  		propertyList.add(new PropertyCard("Community Chest",0,Color.WHITE, false, 0, new Point(353,435), 41,65, new int[0], "Other",2));
  		propertyList.add(new PropertyCard("Baltic Ave.",60,Color.MAGENTA, true, 4, new Point(312,435), 41,65, new int[]{20,60,180,320,450}, "Monopoly",3));
@@ -98,7 +99,7 @@ public class GameServer implements Runnable, IServer
  		propertyList.add(new PropertyCard("Chance",0,Color.WHITE, false, 0, new Point(148,435), 41,65, new int[0], "Other",7));
  		propertyList.add(new PropertyCard("Vermont Ave.",100,Color.CYAN, true, 6, new Point(107,435), 41,65, new int[]{30,90,270,400,500}, "Monopoly",8));
  		propertyList.add(new PropertyCard("Connecticut Ave.",120,Color.CYAN, true, 8, new Point(66,435), 41,65, new int[]{40,100,300,450,600}, "Monopoly",9));
- 		propertyList.add(new PropertyCard("Jail",0,Color.WHITE, false, 0, new Point(0,435), 65,65, new int[0], "Jail",10));
+ 		propertyList.add(new JailCard("Jail",0,Color.WHITE, false, 0, new Point(0,435), 65,65, new int[0], "Jail",10));  //I have changed this to a JailCard which has some extra functions in it on top of the normal property card functions
  		propertyList.add(new PropertyCard("St. Charles Place",140,Color.PINK, true, 10, new Point(0,394), 65,41, new int[]{50,150,450,625,750}, "Monopoly",11));
  		propertyList.add(new PropertyCard("Electric Company",150,Color.WHITE, true, 0, new Point(0,353), 65,41, new int[0], "Utility",12));
  		propertyList.add(new PropertyCard("States Ave.",140,Color.PINK, true, 10, new Point(0,312), 65,41, new int[]{50,150,450,625,750}, "Monopoly",13));
@@ -129,4 +130,8 @@ public class GameServer implements Runnable, IServer
  		propertyList.add(new PropertyCard("Chance",0,Color.WHITE, false, 0, new Point(435,352), 65,41, new int[0], "Other",38));
  		propertyList.add(new PropertyCard("Boardwalk",400,Color.BLUE, true, 50, new Point(435,393), 65,41, new int[]{200,600,1400,1700,2000}, "Monopoly",39));  	
  	}
+
+    public IPropertyCard getCardAt(int i){
+        return propertyList.get(i);
+    }
 }

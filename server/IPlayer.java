@@ -65,5 +65,12 @@ public interface IPlayer
 	
 	//this returns the position of the player
 	public Point getLocation();
+
+	//this returns the number of the card that player is on.
+	public int getCardOn();
+
+	//this sets the new card number
+	public void setCardOn(int i);
+
 	//each player would have a IPiece which would repesent each player on the board and will have the same position
 }

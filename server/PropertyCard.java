@@ -110,5 +110,4 @@ public class PropertyCard implements IPropertyCard
 	public int getY(){
 		return (int)(this.point.getY());
 	}
-	
 }

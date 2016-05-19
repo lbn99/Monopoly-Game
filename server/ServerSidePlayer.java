@@ -18,6 +18,7 @@ public class ServerSidePlayer implements Runnable, IPlayer
 	private boolean turn;
 	private int xpos;
 	private int ypos;
+    private int cardOn;
 	
     public ServerSidePlayer(int id, IServer server, Socket socket, int x, int y) throws IOException
     {
@@ -30,6 +31,7 @@ public class ServerSidePlayer implements Runnable, IPlayer
     	turn = false;
     	xpos = x;
     	ypos = y;
+        cardOn = 0;
     	in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
     	out = new PrintWriter(socket.getOutputStream(), true);
     	listenerList = new ArrayList<INetworkListener>();
@@ -148,4 +150,14 @@ public class ServerSidePlayer implements Runnable, IPlayer
 	public Point getLocation(){
 		return new Point(this.xpos, this.ypos);
 	}
+
+    //this returns the number of the card that player is on.
+    public int getCardOn(){
+        return this.cardOn;
+    }
+
+    //this sets the new card number
+    public void setCardOn(int i){
+        this.cardOn = i;
+    }
 }
