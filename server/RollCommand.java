@@ -18,7 +18,13 @@ class RollCommand extends NetworkListenerAdapter
 			IPropertyCard landedOn = server.getCardAt(newPosition);
 			int newx = 0;
 			int newy = 0;
-
+			
+			if!(landedOn.available())
+			{
+				player.transact(landedOn.getRent()*-1);
+				landedOn.getOwner().transact(landedOn.getRent());
+			}
+			
 			//process for horizontal and verticals sides and assigning new positions
 			if(!(landedOn.getType().equals("Corner"))) {
 				if((newPosition/10)%2==0){
