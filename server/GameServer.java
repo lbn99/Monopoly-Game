@@ -11,6 +11,7 @@ public class GameServer implements Runnable, IServer
 	private boolean running;
 	private CircularLinkedList<IPlayer> playerList;
 	private List<IPropertyCard> propertyList;
+    private List<Point> newPointList;
 	
 	public static void main(String[] args)
 	{
@@ -30,7 +31,12 @@ public class GameServer implements Runnable, IServer
     	id = 0;
     	playerList = new CircularLinkedList<IPlayer>();
     	propertyList = new ArrayList<IPropertyCard>();
-    	init();
+    	newPointList = new ArrayList<Point>();
+        newPointList.add(new Point(444,485));
+        newPointList.add(new Point(452,485));
+        newPointList.add(new Point(460,485));
+        newPointList.add(new Point(468,485));
+        init();
     }
     
     public IPlayer[] getClients()
@@ -67,7 +73,8 @@ public class GameServer implements Runnable, IServer
     		while(running){
     			Socket playerSocket = listener.accept();
     			//GET THE X AND Y FROM THE GUI TO KEEP TRACK OF THE POSITION...
-    			IPlayer player = new ServerSidePlayer(nextID(), this, playerSocket,0,0);
+                int tempIdForPlayer = nextID();
+    			IPlayer player = new ServerSidePlayer(tempIdForPlayer, this, playerSocket,(int)(this.getNextPositionForNewPlayer(tempIdForPlayer).getX()),(int)(this.getNextPositionForNewPlayer(tempIdForPlayer).getY()));
     			playerList.add(player);
     			this.addListeners(player);
     			System.out.println(player.getHandle() + " connected");
@@ -86,7 +93,13 @@ public class GameServer implements Runnable, IServer
    	
    	public void addListeners(IPlayer p){
    		p.addNetworkListener(new BuyCommand());
+        p.addNetworkListener(new RollCommand());
+        p.addNetworkListener(new EndTurnCommand());
    	}
+
+    public Point getNextPositionForNewPlayer(int i){
+        return newPointList.get(i);
+    }
 
    	public void init(){
  		propertyList.add(new PropertyCard("Go",200,Color.WHITE, false, 0, new Point(435,435), 65,65, new int[0], "Corner",0));

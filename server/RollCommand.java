@@ -6,7 +6,7 @@ class RollCommand extends NetworkListenerAdapter
 	//receive from server
 	public void process(String message, IPlayer player, IServer server)
 	{
-		if(isCommand(message, COMMAND)&&player.getTurn())
+		if(isCommand(message, COMMAND)&& player.getTurn())
 		{
 			//roll and move process code goes here
 			int x = (int)(player.getLocation().getX());
@@ -35,9 +35,21 @@ class RollCommand extends NetworkListenerAdapter
 			}
 			
 			//SEND THE PROPERTY CARD INFOS TO THE GUI CLINET HERE:
+			if(landedOn.getAvailable()){
+				player.send("UPDATE " + landedOn.getName() + " Cost - " + landedOn.getPrice() + " Rent - " + landedOn.getRent());
+				System.out.println("@RollCommand Sending the card info to the playerClient");
+			}
 			
 			//TO DO: COLLECT THE RENT FROM THE PLAYRE LANDED IF THE CARD IS ALREADY BOUGHT.
-
+			if(!landedOn.getAvailable()){
+				player.transact((landedOn.getRent())*-1);
+				IPlayer listOfPlayers = server.getClients();
+				for(int i = 0; i < server.getClients().length; i++){
+					if(landedOn.getOwner().equals(listOfPlayers[i].getHandle())){
+						listOfPlayers[i].transact(landedOn.getRent());
+					}
+				}
+			}
 			//WE NEED A FORMAT THROUGH WHICH WE WILL RETURN THIS THING.
 			String ret = "MOVE " + player.getId() + " " + newx + " " + newy;
 			System.out.println("@RollCommand The new position being sent to player #" + player.getId() + " is " + newx + ", " + newy);

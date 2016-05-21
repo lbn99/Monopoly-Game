@@ -12,7 +12,11 @@ class BuyCommand extends NetworkListenerAdapter
 				//buy process code goes here
 				IPropertyCard landedOn = server.getCardAt(player.getCardOn());
 				landedOn.setOwner(player.getHandle());
-				player.send("BUY " + landedOn.getName() + " - Cost: " + landedOn.getCost() + " Rent - " + landedOn.getRent());
+				landedOn.setAvailable(false);
+				//Transcation code goes here:
+				
+				player.send("UPDATE "+ player.getHandle() + " bought " + landedOn.getName() + " - Cost: " + landedOn.getCost() + " Rent - " + landedOn.getRent());
+				//BOUGHT THING NEEDS TO BE BROADCASTED
 			}
 		}
 	}

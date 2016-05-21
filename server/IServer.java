@@ -18,6 +18,8 @@ interface IServer
 	public IPlayer[] getClients();
 	
 	public IPropertyCard getCardAt(int i);
+
+	public Point getNextPositionForNewPlayer(int i);
 	
 	public IPlayer getNext();
 }

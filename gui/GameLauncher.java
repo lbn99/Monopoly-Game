@@ -10,6 +10,7 @@ public class GameLauncher{
 		else{
 			String IP = JOptionPane.showInputDialog(null, "Enter the IP Address of the host");
 			int port = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the port of the host"));
+			String name = (String)JOptionPane.showInputDialog(null,"Enter the name");
 			Monopoly frame = new Monopoly("Monopoly!", IP, port);
 		}
 	}

@@ -14,7 +14,7 @@ public class GameClient implements Runnable, IClient
 	private String handle;
 	private HashMap<String, Point> playerLocation;
 	
-	public GameClient(String ip, int port) throws UnknownHostException, IOException
+	public GameClient(String ip, int port, String name) throws UnknownHostException, IOException
 	{
 		//Initialize the instance variables
 		socket = new Socket(ip, port);
@@ -23,6 +23,7 @@ public class GameClient implements Runnable, IClient
 		running = true;
 		listeners = new ArrayList<INetworkListener>();
 		playerLocation = new HashMap<String, Point>();
+		this.send("SETHANDLE " + name);
 	}
 
 	//Methods (defined in interfaces: IClient and Runnable)

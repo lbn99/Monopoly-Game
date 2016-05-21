@@ -38,11 +38,11 @@ public class ServerSidePlayer implements Runnable, IPlayer
     	Thread t = new Thread(this);
     	t.start();
     	
-    	handle = "Anon" + (rand.nextInt(900000)+100000);
+    	handle = "Player" + (rand.nextInt(900000)+100000);
     	
 //		addNetworkListener();
     }
-    
+
     public String getHandle()
     {
     	return handle;
