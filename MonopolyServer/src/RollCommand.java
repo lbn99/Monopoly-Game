@@ -14,12 +14,12 @@ class RollCommand extends NetworkListenerAdapter
 			int y = (int)(player.getLocation().getY());
 			int move = Integer.parseInt(message.substring(5,6)) + Integer.parseInt(message.substring(7,8));
 			int newPosition  = player.getCardOn() + move;
-			if(move>39){ newPosition -=40;}
+			if(newPosition>39){ newPosition -=40;}
 			player.setCardOn(newPosition);
 			IPropertyCard landedOn = server.getCardAt(newPosition);
 			int newx = 0;
 			int newy = 0;
-
+			System.out.println("@roll command the value of move is " + move);
 			//process for horizontal and verticals sides and assigning new positions
 	/*		if(!(landedOn.getType().equals("Corner"))) {
 				if((newPosition/10)%2==0){
