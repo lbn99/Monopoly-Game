@@ -39,6 +39,11 @@ public class ServerSidePlayer implements Runnable, IPlayer
     	t.start();
     	
     	handle = "Player" + (rand.nextInt(900000)+100000);
+        IPlayer[] tempList = server.getClients();
+        //Sending all the players the id of this player.
+        for(int i = 0; i < tempList.length; i++){        
+                tempList[i].send("ADD " + this.getId()+ " " + xpos + " " + ypos);
+        }
     	
 //		addNetworkListener();
     }
@@ -93,8 +98,12 @@ public class ServerSidePlayer implements Runnable, IPlayer
     public void process(String message)
     {
     	System.out.println("SSP>" + message);
-    	for(INetworkListener l : listenerList)
-    		l.process(message, this, server);
+        if(message.contains("SETHANDLE")){
+            this.setHandle(message.substring(10));
+        }else{
+    	   for(INetworkListener l : listenerList)
+    		  l.process(message, this, server);
+        }
     }
     
     //this would add the property to the list

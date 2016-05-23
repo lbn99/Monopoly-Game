@@ -1,4 +1,7 @@
-public class ListCommand() extends NetworkListenerAdapter
+import javax.swing.*;
+import java.awt.*;
+
+public class ListCommand extends NetworkListenerAdapter
 {
 	public static String COMMAND = "LIST";
 	private JTextArea playerInfos;
@@ -34,8 +37,8 @@ public class ListCommand() extends NetworkListenerAdapter
 			String[] todo = message.split("-");
 			String list = "";
 			for(int i = 0; i < todo.length; i++) {
-				todo[i] = todo.substring(1,todo[i].length()-1);
-				finaltodo = todo[i].split(",");
+				todo[i] = todo[i].substring(1,todo[i].length()-1);
+				String[] finaltodo = todo[i].split(",");
 				String name = finaltodo[0];
 				String money = finaltodo[1];
 				list += name + ": " + money + " \n";
@@ -59,7 +62,7 @@ public class ListCommand() extends NetworkListenerAdapter
 			}
 		}
 	}
-	
+/*	
 	public String getName(String str)
 	{
 		String name = "";
@@ -79,4 +82,5 @@ public class ListCommand() extends NetworkListenerAdapter
 		}
 		return "";
 	}
+	*/
 }

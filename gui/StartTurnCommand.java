@@ -1,4 +1,4 @@
-public class StartTurnCommand() extends NetworkListenerAdapter
+public class StartTurnCommand extends NetworkListenerAdapter
 {
 	public static String COMMAND = "STARTTURN";
 	
@@ -6,9 +6,9 @@ public class StartTurnCommand() extends NetworkListenerAdapter
 	{
 		if(isCommand(message, COMMAND))
 		{
-			String[] s = message.split(" ");
-			boolean turn = boolean.parseBoolean(s[1]);
-			client.setTurn(turn);
+		//	String[] s = message.split(" ");
+		//	boolean turn = boolean.parseBoolean(s[1]);
+		//	client.setTurn(turn);
 		}
 	}
 		

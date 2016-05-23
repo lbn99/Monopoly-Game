@@ -1,16 +1,23 @@
-public class MoveCommand() extends NetworkListenerAdapter
+import java.util.*;
+import java.awt.Point;
+
+public class MoveCommand extends NetworkListenerAdapter
 {
 	public static String COMMAND = "MOVE";
-	
+	HashMap<String, Point> listofPlayersOnline;
+	public MoveCommand(HashMap<String, Point> s){
+		listofPlayersOnline = s;
+	}
 	public void process(String message, IClient client)
 	{
 		if(isCommand(message, COMMAND))
 		{
-			String[] s = message.split(" ")
+			String[] s = message.split(" ");
 			String name = s[1];
 			int x = Integer.parseInt(s[2]);
 			int y = Integer.parseInt(s[3]);
-			client.setPlayerLocation(name, x, y);
+			listofPlayersOnline.put(name, new Point(x,y));
+			client.process("UPDATEBOARD");
 		}
 	}
 		

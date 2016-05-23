@@ -1,4 +1,3 @@
-
 class BuyCommand extends NetworkListenerAdapter
 {
 	public static String COMMAND = "BUY";
@@ -14,9 +13,10 @@ class BuyCommand extends NetworkListenerAdapter
 				landedOn.setOwner(player.getHandle());
 				landedOn.setAvailable(false);
 				//Transcation code goes here:
-				
+
 				player.send("UPDATE "+ player.getHandle() + " bought " + landedOn.getName() + " - Cost: " + landedOn.getCost() + " Rent - " + landedOn.getRent());
 				//BOUGHT THING NEEDS TO BE BROADCASTED
+				
 			}
 		}
 	}

@@ -1,14 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.Scanner;
+import java.util.List;
+import java.util.HashMap;
 
 public class Monopoly extends JFrame
 {
+	private HashMap<String, Point> playerLocation;
 	public static void main(String[] args)
 	{
 		Scanner input = new Scanner(System.in);
 		//Create a Frame to hold everything
-		Monopoly frame = new Monopoly("Monopoly!");
+	//	Monopoly frame = new Monopoly("Monopoly!");
 	}
 	
 	public Monopoly(String title, String ip, int port, String name)
@@ -42,7 +45,7 @@ public class Monopoly extends JFrame
 			this.add(panel2, BorderLayout.CENTER);
 			
 			//panel that displays board and draws player icons
-			BoardPanel board = new BoardPanel(state);
+			BoardPanel board = new BoardPanel();
 			panel2.add(board, BorderLayout.CENTER);
 			
 			//textarea to display player info (name, amount of money, and property)
@@ -89,7 +92,7 @@ public class Monopoly extends JFrame
 
 			GameClient playerClient =  new GameClient(ip, port, name);
 			playerClient.addNetworkListener(new ListCommand(cardMessage));
-			
+			playerLocation = new HashMap<String, Point>();
 		}catch (Exception e){
 			System.out.println("@Monopoly catch: Error is " + e.getMessage());
 		}

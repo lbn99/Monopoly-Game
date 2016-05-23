@@ -36,22 +36,43 @@ class RollCommand extends NetworkListenerAdapter
 			
 			//SEND THE PROPERTY CARD INFOS TO THE GUI CLINET HERE:
 			if(landedOn.getAvailable()){
-				player.send("UPDATE " + landedOn.getName() + " Cost - " + landedOn.getPrice() + " Rent - " + landedOn.getRent());
+				player.send("UPDATE " + landedOn.getName() + " Cost - " + landedOn.getCost() + " Rent - " + landedOn.getRent());
 				System.out.println("@RollCommand Sending the card info to the playerClient");
 			}
-			
+			IPlayer[] listOfPlayers = server.getClients();
 			//TO DO: COLLECT THE RENT FROM THE PLAYRE LANDED IF THE CARD IS ALREADY BOUGHT.
 			if(!landedOn.getAvailable()){
 				player.transact((landedOn.getRent())*-1);
-				IPlayer listOfPlayers = server.getClients();
 				for(int i = 0; i < server.getClients().length; i++){
 					if(landedOn.getOwner().equals(listOfPlayers[i].getHandle())){
 						listOfPlayers[i].transact(landedOn.getRent());
 					}
 				}
 			}
-			//WE NEED A FORMAT THROUGH WHICH WE WILL RETURN THIS THING.
+			/*
+			Here is the plan to update the moves:
+			When someone rolls, it will come to this command and process
+			the data and create two points. Then it will send the id
+			of the player that moved and the points to all the players.
+			Each player, the client, has its own haspmap list that
+			has key as the player id and value as the point.
+			As soon as the move command in the client recievves the message
+			from this, it will update the map. Then it will the update
+			board command in the client. That will update the board using the
+			points from the hashmap.
+			The hasp map is also updated when someone joins the game (addCommand).
+			The addcaommand also calls the update board, which will make new player
+			appear on the board.
+			*/
+		//	String retbroad = "UPDATEBOARD";
+		//	for(int i = 0; i < listOfPlayers.length; i++){
+		//		retbroad += " "+listOfPlayers[i].getId() + " " + (int)(listOfPlayers[i].getLocation().getX()) + " " + (int)(listOfPlayers[i].getLocation().getY());
+		//	}
+		//	server.broadcast(retbroad);
+		//	server.broadcast("BOARD ");
 			String ret = "MOVE " + player.getId() + " " + newx + " " + newy;
+			player.send(ret);
+			server.broadcast(ret);
 			System.out.println("@RollCommand The new position being sent to player #" + player.getId() + " is " + newx + ", " + newy);
 			System.out.println("@RollCommand The ret is " + ret);
 		}

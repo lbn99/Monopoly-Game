@@ -12,7 +12,6 @@ public class GameClient implements Runnable, IClient
 	private boolean running;					//is the Thread is currently running?
 	private List<INetworkListener> listeners;	//List of all INetworkListener objects that are listening to this client
 	private String handle;
-	private HashMap<String, Point> playerLocation;
 	
 	public GameClient(String ip, int port, String name) throws UnknownHostException, IOException
 	{
@@ -22,7 +21,6 @@ public class GameClient implements Runnable, IClient
 		out = new PrintWriter(socket.getOutputStream(), true);
 		running = true;
 		listeners = new ArrayList<INetworkListener>();
-		playerLocation = new HashMap<String, Point>();
 		this.send("SETHANDLE " + name);
 	}
 
@@ -76,12 +74,5 @@ public class GameClient implements Runnable, IClient
 	}
 	
 	public int getId(){ return 0; }
-	
-	public void setPlayerLocation(String pName, int x, int y){
-//		playerLocation.
-	}
-	public void setTurn(boolean isTurn){
-		
-	}
 }
 

@@ -1,3 +1,5 @@
+import java.awt.Point;
+
 interface IServer 
 {
 	//This will send the data to all clients that are connected to this server
