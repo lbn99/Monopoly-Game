@@ -69,9 +69,10 @@ class RollCommand extends NetworkListenerAdapter
 				System.out.println("@RollCommand Sending the card info to the playerClient");
 			}
 			IPlayer[] listOfPlayers = server.getClients();
-			//TO DO: COLLECT THE RENT FROM THE PLAYRE LANDED IF THE CARD IS ALREADY BOUGHT.
+			//TO DO: COLLECT THE RENT FROM THE PLAYER LANDED IF THE CARD IS ALREADY BOUGHT.
 			if(!landedOn.getAvailable()){
 				player.transact((landedOn.getRent())*-1);
+				player.send("UPDATE " + player.getHandle() + " pays rent to " + landedOn.getOwner());
 				for(int i = 0; i < server.getClients().length; i++){
 					if(landedOn.getOwner().equals(listOfPlayers[i].getHandle())){
 						listOfPlayers[i].transact(landedOn.getRent());

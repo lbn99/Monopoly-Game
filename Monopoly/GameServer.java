@@ -97,6 +97,7 @@ public class GameServer implements Runnable, IServer
    		p.addNetworkListener(new BuyCommand());
         p.addNetworkListener(new RollCommand());
         p.addNetworkListener(new EndTurnCommand());
+        p.addNetworkListener(new PlayerListCommand());
    	}
 
     public Point getNextPositionForNewPlayer(int i){
@@ -147,7 +148,11 @@ public class GameServer implements Runnable, IServer
  	}
 
     public IPropertyCard getCardAt(int i){ return propertyList.get(i); }
-	public IPlayer getNext(){ return playerList.poll(); }
+	public IPlayer getNext(){
+		 IPlayer temp = playerList.poll();
+		 playerList.add(temp);
+		 return temp; 
+	}
 	public void setStart(boolean s){ 
 		if(s){
 			System.out.println("@gameserver game start is true!");

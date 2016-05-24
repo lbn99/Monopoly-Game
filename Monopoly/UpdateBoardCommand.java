@@ -1,15 +1,16 @@
 import java.util.*;
 import java.awt.Point;
+import javax.swing.JFrame;
 public class UpdateBoardCommand extends ClientListenerAdapter
 {
 	public static String COMMAND = "UPDATEBOARD";
-	private BoardPanel panel;
+	private JFrame frame;
 
 	HashMap<String, Point> listofPlayersOnline;
 
-	public UpdateBoardCommand(HashMap<String, Point> s,BoardPanel t){
+	public UpdateBoardCommand(HashMap<String, Point> s,JFrame f){
 		listofPlayersOnline = s;
-		panel = t;
+		frame = f;
 	}
 	
 	
@@ -18,8 +19,8 @@ public class UpdateBoardCommand extends ClientListenerAdapter
 		if(isCommand(message, COMMAND))
 		{
 			System.out.println("In the updateboard command");
-			panel.repaint();
-			panel.validate();
+			frame.repaint();
+			frame.validate();
 		}
 	}
 }

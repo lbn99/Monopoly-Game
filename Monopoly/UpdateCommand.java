@@ -11,11 +11,11 @@ public class UpdateCommand extends ClientListenerAdapter
 	
 	public void process(String message, IClient client)
 	{
+		System.out.println("message in update command is " + message);
 		if(isCommand(message, COMMAND))
 		{
 			System.out.println("In the Update command");
-			textArea.setText("");
-			textArea.append(message.substring(7) + "\n");
+			textArea.setText(message.substring(7) + "\n");
 		}
 	}
 }

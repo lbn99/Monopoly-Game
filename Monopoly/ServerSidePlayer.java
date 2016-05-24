@@ -37,7 +37,7 @@ public class ServerSidePlayer implements Runnable, IPlayer
     	listenerList = new ArrayList<INetworkListener>();
     	Thread t = new Thread(this);
     	t.start();
-    	
+    	properties = new ArrayList<IPropertyCard>();
     	handle = "Player" + (rand.nextInt(900000)+100000);
         IPlayer[] tempList = server.getClients();
         //Sending all the players the id of this player.
@@ -107,6 +107,7 @@ public class ServerSidePlayer implements Runnable, IPlayer
     
     //this would add the property to the list
 	public void add(IPropertyCard p){
+		System.out.println("@SSP> @serverSidePlayer in the add function");
 		properties.add(p);
 	}
 

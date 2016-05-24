@@ -33,6 +33,24 @@
 				<path>BoardPanel.java</path>
 			</fileitem>
 			<fileitem>
+				<path>BuyButton.java</path>
+			</fileitem>
+			<fileitem>
+				<path>BuyCommand.java</path>
+			</fileitem>
+			<fileitem>
+				<path>CircularLinkedList.java</path>
+			</fileitem>
+			<fileitem>
+				<path>ClientListenerAdapter.java</path>
+			</fileitem>
+			<fileitem>
+				<path>EndTurnButton.java</path>
+			</fileitem>
+			<fileitem>
+				<path>EndTurnCommand.java</path>
+			</fileitem>
+			<fileitem>
 				<path>FancyButton.java</path>
 			</fileitem>
 			<fileitem>
@@ -42,10 +60,34 @@
 				<path>GameLauncher.java</path>
 			</fileitem>
 			<fileitem>
+				<path>GameServer.java</path>
+			</fileitem>
+			<fileitem>
+				<path>GameStartCommand.java</path>
+			</fileitem>
+			<fileitem>
 				<path>IClient.java</path>
 			</fileitem>
 			<fileitem>
+				<path>IClientListener.java</path>
+			</fileitem>
+			<fileitem>
+				<path>IList.java</path>
+			</fileitem>
+			<fileitem>
 				<path>INetworkListener.java</path>
+			</fileitem>
+			<fileitem>
+				<path>IPlayer.java</path>
+			</fileitem>
+			<fileitem>
+				<path>IPropertyCard.java</path>
+			</fileitem>
+			<fileitem>
+				<path>IServer.java</path>
+			</fileitem>
+			<fileitem>
+				<path>JailCard.java</path>
 			</fileitem>
 			<fileitem>
 				<path>ListCommand.java</path>
@@ -58,6 +100,24 @@
 			</fileitem>
 			<fileitem>
 				<path>NetworkListenerAdapter.java</path>
+			</fileitem>
+			<fileitem>
+				<path>PlayerListCommand.java</path>
+			</fileitem>
+			<fileitem>
+				<path>PropertyCard.java</path>
+			</fileitem>
+			<fileitem>
+				<path>RollCommand.java</path>
+			</fileitem>
+			<fileitem>
+				<path>Server.java</path>
+			</fileitem>
+			<fileitem>
+				<path>ServerSideClient.java</path>
+			</fileitem>
+			<fileitem>
+				<path>ServerSidePlayer.java</path>
 			</fileitem>
 			<fileitem>
 				<path>StartTurnCommand.java</path>

@@ -8,44 +8,9 @@
 		<project>
 			<label>Monopoly</label>
 			<showfiles>false</showfiles>
+			<folderitem>
+				<path>classes</path>
+			</folderitem>
 		</project>
 	</projects>
-	<open_files>
-		<docitem>
-			<path>GameClient.java</path>
-			<source>true</source>
-			<index>0</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>GameLauncher.java</path>
-			<source>true</source>
-			<index>1</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>FancyButton.java</path>
-			<source>true</source>
-			<index>2</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>UpdateBoardCommand.java</path>
-			<source>true</source>
-			<index>3</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>UpdateCommand.java</path>
-			<source>true</source>
-			<index>4</index>
-			<active>true</active>
-		</docitem>
-		<docitem>
-			<path>Monopoly.java</path>
-			<source>true</source>
-			<index>5</index>
-			<active>false</active>
-		</docitem>
-	</open_files>
 </workspace_user>

@@ -1,5 +1,6 @@
 public class StartTurnCommand extends ClientListenerAdapter
 {
+	//THIS IS USED TO END TURN THE CLIENT
 	public static String COMMAND = "STARTTURN";
 	
 	public void process(String message, IClient client)

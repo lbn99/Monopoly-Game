@@ -55,7 +55,7 @@ public class Monopoly extends JFrame
 		
 		//textarea to display actions in game (such as "buy card?" or message of a chance/community chest card)
 		JTextArea cardMessage = new JTextArea(3, 3);
-		panel2.add(cardMessage, BorderLayout.NORTH);
+		panel2.add(new JScrollPane(cardMessage), BorderLayout.NORTH);
 		cardMessage.setEditable(false);
 		
 		//dice 1 image for roll
@@ -71,7 +71,7 @@ public class Monopoly extends JFrame
 			playerClient =  new GameClient(ip, port, name);
 			playerClient.addNetworkListener(new ListCommand(players));
 			playerClient.addNetworkListener(new MoveCommand(playerLocation));
-			playerClient.addNetworkListener(new UpdateBoardCommand(playerLocation, board));
+			playerClient.addNetworkListener(new UpdateBoardCommand(playerLocation, this));
 			playerClient.addNetworkListener(new AddCommand(playerLocation));
 			playerClient.addNetworkListener(new UpdateCommand(cardMessage));
 			playerClient.addNetworkListener(new GameStartCommand());
@@ -81,8 +81,10 @@ public class Monopoly extends JFrame
 				while(playerClient.start() == false){
 					System.out.println(playerClient.start());
 					JOptionPane.showMessageDialog(null, "Connected! Waiting to start game...\n", "Monopoly!", JOptionPane.PLAIN_MESSAGE);
+					playerClient.send("LIST");
 				}
-			
+			this.repaint();
+			this.validate();
 		}catch (Exception e){
 			System.out.println("@Monopoly catch: Error is " + e.getMessage());
 		}
@@ -94,13 +96,16 @@ public class Monopoly extends JFrame
 		bottom.add(dice2);
 		
 		//button to control buying of property for *this* player
-		JButton buy = new JButton("Buy");
+		JButton buy = new BuyButton("Buy",playerClient );
 		bottom.add(buy);
 		
 		//button to control end turn for *this* player
-		JButton endTurn = new JButton("End Turn");
+		JButton endTurn = new EndTurnButton("End Turn", playerClient);
 		bottom.add(endTurn);
 		
+		playerClient.send("LIST");
+		
+		System.out.println("We be updatin and validatin fam");
 		this.repaint();
 		this.validate();
 	}

@@ -53,8 +53,10 @@ public class GameClient implements Runnable, IClient
 		System.out.println("Running");
 		while(running){
 			try{
-				System.out.println("Message: " + in.readLine());
-				process(in.readLine());
+				String msg = in.readLine();
+				System.out.println("Message: " + msg);
+				process(msg);
+				System.out.println("MESSAGE PROCESSED");
 			}
 			catch(Exception e){
 				System.out.println("ERROR: " + e.getMessage());
