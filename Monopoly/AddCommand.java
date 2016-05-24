@@ -1,7 +1,7 @@
 import java.util.*;
 import java.awt.Point;
 
-public class AddCommand extends NetworkListenerAdapter
+public class AddCommand extends ClientListenerAdapter
 {
 	public static String COMMAND = "ADD";
 

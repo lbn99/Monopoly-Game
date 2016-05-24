@@ -11,12 +11,14 @@ public interface IClient
 	//This adds the paramter INetworkListener to a list of INetworkListeners.
 	//Everything in that List is considered to be "listening" to this Client
 	//Objects that are listening to this Client are able to respond to send and process events
-	public void addNetworkListener(INetworkListener listener);
+	public void addNetworkListener(IClientListener listener);
 	
 	//This has an "infinite" loop that listens for data from the server
 	public void run();
 	
 	//This makes the run method stop it's "infinite" loop
 	public  void stop();
-		
+	
+	public void setStart(boolean s);
+	public boolean start();
 }

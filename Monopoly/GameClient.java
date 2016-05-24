@@ -10,7 +10,8 @@ public class GameClient implements Runnable, IClient
 	private BufferedReader in;					//Object used to read data send from the Server (if connected)
 	private PrintWriter out;					//Object used to send data to the Server (if connected)
 	private boolean running;					//is the Thread is currently running?
-	private List<INetworkListener> listeners;	//List of all INetworkListener objects that are listening to this client
+	private boolean start;
+	private List<IClientListener> listeners;	//List of all INetworkListener objects that are listening to this client
 	private String handle;
 	
 	public GameClient(String ip, int port, String name) throws UnknownHostException, IOException
@@ -20,7 +21,8 @@ public class GameClient implements Runnable, IClient
 		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		out = new PrintWriter(socket.getOutputStream(), true);
 		running = true;
-		listeners = new ArrayList<INetworkListener>();
+		listeners = new ArrayList<IClientListener>();
+		start = false;
 		this.send("SETHANDLE " + name);
 	}
 
@@ -35,14 +37,14 @@ public class GameClient implements Runnable, IClient
 	//This is called when data is received from the server
 	//This data should be passed to all of the INetworkListener objects that are listening to this client
 	public void process(String str){
-		for(INetworkListener l : listeners)
+		for(IClientListener l : listeners)
 			l.process(str, this);
 	}
 
 	//This adds the paramter INetworkListener to a list of INetworkListeners.
 	//Everything in that List is considered to be "listening" to this Client
 	//Objects that are listening to this Client are able to respond to send and process events
-	public void addNetworkListener(INetworkListener listener){
+	public void addNetworkListener(IClientListener listener){
 		listeners.add(listener);
 	}
 	
@@ -74,7 +76,7 @@ public class GameClient implements Runnable, IClient
 	public void setHandle(String s){
 		handle = s;
 	}
-	
-	public int getId(){ return 0; }
+	public void setStart(boolean s){System.out.println(s + " " + start); start = s; } 
+	public boolean start(){ return start; }
 }
 

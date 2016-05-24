@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public abstract class NetworkListenerAdapter implements INetworkListener 
+public abstract class ClientListenerAdapter implements IClientListener 
 {
 	public boolean isCommand(String message, String cmd)
 	{

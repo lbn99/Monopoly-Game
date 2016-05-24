@@ -1,7 +1,7 @@
 import java.util.*;
 import java.awt.Point;
 
-public class MoveCommand extends NetworkListenerAdapter
+public class MoveCommand extends ClientListenerAdapter
 {
 	public static String COMMAND = "MOVE";
 	HashMap<String, Point> listofPlayersOnline;

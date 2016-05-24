@@ -1,6 +1,6 @@
 import java.util.*;
 import javax.swing.*;
-public class UpdateCommand extends NetworkListenerAdapter
+public class UpdateCommand extends ClientListenerAdapter
 {
 	public static String COMMAND = "UPDATE";
 	private JTextArea textArea;

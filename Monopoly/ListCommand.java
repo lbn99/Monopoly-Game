@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class ListCommand extends NetworkListenerAdapter
+public class ListCommand extends ClientListenerAdapter
 {
 	public static String COMMAND = "LIST";
 	private JTextArea playerInfos;

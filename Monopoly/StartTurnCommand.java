@@ -1,4 +1,4 @@
-public class StartTurnCommand extends NetworkListenerAdapter
+public class StartTurnCommand extends ClientListenerAdapter
 {
 	public static String COMMAND = "STARTTURN";
 	

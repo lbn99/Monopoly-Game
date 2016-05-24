@@ -17,9 +17,9 @@ public class FancyButton
 	private ImageIcon a6;
 	private JTextArea message;
 	private BoardPanel board;
-	private State state;
 	private IClient client;
-    public FancyButton(String label, JLabel a, JLabel b, JTextArea c, BoardPanel d, State s, IClient cc) 
+	
+    public FancyButton(String label, JLabel a, JLabel b, JTextArea c, BoardPanel d, IClient cc) 
    {
     	super(label);	//Give the label to the JButton constructor to deal with
     	
@@ -37,13 +37,7 @@ public class FancyButton
     	a6 = new ImageIcon("../dice6.jpg");
     	message = c;
     	board = d;
-    	state = s;
     	client = cc;
-    }
-    
-    public void setPlayers()
-    {
-    	
     }
     
     //This is called when anything that *this* is listening to triggers an action.
@@ -72,35 +66,7 @@ public class FancyButton
     	}
     	int move = roll + roll2;
     	client.send("ROLL " + roll + " " + roll2);
-   /* 	while(move > 0){
-    		if((int)state.getPoint().getX() > 106 && (int)state.getPoint().getY() == 485)
-    			state.setPoint(new Point((int)state.getPoint().getX() - 41, (int)state.getPoint().getY()));
-    		else if((int)state.getPoint().getX() < 106 && (int)state.getPoint().getX() > 65 && (int)state.getPoint().getY() == 485)
-    			state.setPoint(new Point((int)state.getPoint().getX() - 65, (int)state.getPoint().getY()));
-    		else if((int)state.getPoint().getX() < 65 && (int)state.getPoint().getY() == 485)
-    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() - 65));
-    		else if((int)state.getPoint().getX() < 65 && (int)state.getPoint().getY() > 106)
-    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() - 41));
-    		else if((int)state.getPoint().getX() < 65 && (int)state.getPoint().getY() < 106 && (int)state.getPoint().getY() > 65)
-    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() - 90));
-    		else if((int)state.getPoint().getX() < 65 && (int)state.getPoint().getY() < 65)
-    			state.setPoint(new Point((int)state.getPoint().getX() + 65, (int)state.getPoint().getY()));
-    		else if((int)state.getPoint().getX() > 65 && (int)state.getPoint().getY() < 65 && (int)state.getPoint().getX() < 393)
-    			state.setPoint(new Point((int)state.getPoint().getX() + 41, (int)state.getPoint().getY()));
-    		else if((int)state.getPoint().getX() > 394 && (int)state.getPoint().getX() < 436 && (int)state.getPoint().getY() < 65)
-    			state.setPoint(new Point((int)state.getPoint().getX() + 65, (int)state.getPoint().getY()));
-    		else if((int)state.getPoint().getX() > 436 && (int)state.getPoint().getY() < 65)
-    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() + 65));
-    		else if((int)state.getPoint().getX() > 436 && (int)state.getPoint().getY() < 393)
-    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() + 41));
-    		else if((int)state.getPoint().getX() > 436 && (int)state.getPoint().getY() < 393)
-    			state.setPoint(new Point((int)state.getPoint().getX(), (int)state.getPoint().getY() + 41));
-    		else if((int)state.getPoint().getX() > 436 && (int)state.getPoint().getY() > 393 && (int)state.getPoint().getY() < 434)
-    			state.setPoint(new Point(436, 485));
-    		System.out.println((int)state.getPoint().getX() + "," + (int)state.getPoint().getY());
-    		move--;
-    	}*/
-    //	board.repaint();
+    	
     	if(roll == roll2)
     	{
     		message.setText("");

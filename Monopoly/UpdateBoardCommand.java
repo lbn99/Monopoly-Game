@@ -1,6 +1,6 @@
 import java.util.*;
 import java.awt.Point;
-public class UpdateBoardCommand extends NetworkListenerAdapter
+public class UpdateBoardCommand extends ClientListenerAdapter
 {
 	public static String COMMAND = "UPDATEBOARD";
 	private BoardPanel panel;
@@ -9,7 +9,7 @@ public class UpdateBoardCommand extends NetworkListenerAdapter
 
 	public UpdateBoardCommand(HashMap<String, Point> s,BoardPanel t){
 		listofPlayersOnline = s;
-			panel = t;
+		panel = t;
 	}
 	
 	
