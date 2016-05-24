@@ -19,7 +19,6 @@ class RollCommand extends NetworkListenerAdapter
 			IPropertyCard landedOn = server.getCardAt(newPosition);
 			int newx = 0;
 			int newy = 0;
-			System.out.println("@roll command the value of move is " + move);
 			//process for horizontal and verticals sides and assigning new positions
 	/*		if(!(landedOn.getType().equals("Corner"))) {
 				if((newPosition/10)%2==0){
@@ -35,38 +34,43 @@ class RollCommand extends NetworkListenerAdapter
 				}
 			}
 			*/
-			while(move > 0){
-	    		if((int)player.getLocation().getX() > 106 && (int)player.getLocation().getY() == 485)
-	    			player.setLocation(new Point((int)player.getLocation().getX() - 41, (int)player.getLocation().getY()));
-	    		else if((int)player.getLocation().getX() < 106 && (int)player.getLocation().getX() > 65 && (int)player.getLocation().getY() == 485)
-	    			player.setLocation(new Point((int)player.getLocation().getX() - 65, (int)player.getLocation().getY()));
-	    		else if((int)player.getLocation().getX() < 65 && (int)player.getLocation().getY() == 485)
-	    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() - 65));
-	    		else if((int)player.getLocation().getX() < 65 && (int)player.getLocation().getY() > 106)
-	    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() - 41));
-	    		else if((int)player.getLocation().getX() < 65 && (int)player.getLocation().getY() < 106 && (int)player.getLocation().getY() > 65)
-	    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() - 90));
-	    		else if((int)player.getLocation().getX() < 65 && (int)player.getLocation().getY() < 65)
-	    			player.setLocation(new Point((int)player.getLocation().getX() + 65, (int)player.getLocation().getY()));
-	    		else if((int)player.getLocation().getX() > 65 && (int)player.getLocation().getY() < 65 && (int)player.getLocation().getX() < 393)
-	    			player.setLocation(new Point((int)player.getLocation().getX() + 41, (int)player.getLocation().getY()));
-	    		else if((int)player.getLocation().getX() > 394 && (int)player.getLocation().getX() < 436 && (int)player.getLocation().getY() < 65)
-	    			player.setLocation(new Point((int)player.getLocation().getX() + 65, (int)player.getLocation().getY()));
-	    		else if((int)player.getLocation().getX() > 436 && (int)player.getLocation().getY() < 65)
-	    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() + 65));
-	    		else if((int)player.getLocation().getX() > 436 && (int)player.getLocation().getY() < 393)
-	    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() + 41));
-	    		else if((int)player.getLocation().getX() > 436 && (int)player.getLocation().getY() < 393)
-	    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() + 41));
-	    		else if((int)player.getLocation().getX() > 436 && (int)player.getLocation().getY() > 393 && (int)player.getLocation().getY() < 434)
-	    			player.setLocation(new Point(436, 485));
-	    		System.out.println((int)player.getLocation().getX() + "," + (int)player.getLocation().getY());
-	    		move--;
-	    	}
+			if(!landedOn.getType().equals("Monopoly")){
+				while(move > 0){
+		    		if((int)player.getLocation().getX() > 106 && (int)player.getLocation().getY() == 485)
+		    			player.setLocation(new Point((int)player.getLocation().getX() - 41, (int)player.getLocation().getY()));
+		    		else if((int)player.getLocation().getX() < 106 && (int)player.getLocation().getX() > 65 && (int)player.getLocation().getY() == 485)
+		    			player.setLocation(new Point((int)player.getLocation().getX() - 65, (int)player.getLocation().getY()));
+		    		else if((int)player.getLocation().getX() < 65 && (int)player.getLocation().getY() == 485)
+		    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() - 65));
+		    		else if((int)player.getLocation().getX() < 65 && (int)player.getLocation().getY() > 106)
+		    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() - 41));
+		    		else if((int)player.getLocation().getX() < 65 && (int)player.getLocation().getY() < 106 && (int)player.getLocation().getY() > 65)
+		    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() - 90));
+		    		else if((int)player.getLocation().getX() < 65 && (int)player.getLocation().getY() < 65)
+		    			player.setLocation(new Point((int)player.getLocation().getX() + 65, (int)player.getLocation().getY()));
+		    		else if((int)player.getLocation().getX() > 65 && (int)player.getLocation().getY() < 65 && (int)player.getLocation().getX() < 393)
+		    			player.setLocation(new Point((int)player.getLocation().getX() + 41, (int)player.getLocation().getY()));
+		    		else if((int)player.getLocation().getX() > 394 && (int)player.getLocation().getX() < 436 && (int)player.getLocation().getY() < 65)
+		    			player.setLocation(new Point((int)player.getLocation().getX() + 65, (int)player.getLocation().getY()));
+		    		else if((int)player.getLocation().getX() > 436 && (int)player.getLocation().getY() < 65)
+		    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() + 65));
+		    		else if((int)player.getLocation().getX() > 436 && (int)player.getLocation().getY() < 393)
+		    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() + 41));
+		    		else if((int)player.getLocation().getX() > 436 && (int)player.getLocation().getY() < 393)
+		    			player.setLocation(new Point((int)player.getLocation().getX(), (int)player.getLocation().getY() + 41));
+		    		else if((int)player.getLocation().getX() > 436 && (int)player.getLocation().getY() > 393 && (int)player.getLocation().getY() < 434)
+		    			player.setLocation(new Point(436, 485));
+		    		System.out.println((int)player.getLocation().getX() + "," + (int)player.getLocation().getY());
+		    		move--;
+				}
+			}
 			//SEND THE PROPERTY CARD INFOS TO THE GUI CLINET HERE:
-			if(landedOn.getAvailable()){
+			if(landedOn.getAvailable()&&landedOn.getType().equals("Monopoly")){
 				player.send("UPDATE " + landedOn.getName() + " Cost - " + landedOn.getCost() + " Rent - " + landedOn.getRent());
 				System.out.println("@RollCommand Sending the card info to the playerClient");
+			}
+			else if(landedOn.getAvailable()){
+				player.send("UPDATE " + landedOn.getData());
 			}
 			IPlayer[] listOfPlayers = server.getClients();
 			//TO DO: COLLECT THE RENT FROM THE PLAYER LANDED IF THE CARD IS ALREADY BOUGHT.
