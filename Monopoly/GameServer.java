@@ -14,6 +14,7 @@ public class GameServer implements Runnable, IServer
 	private Queue<IPlayer> playerList;
 	private List<IPropertyCard> propertyList;
     private List<Point> newPointList;
+    private List<IPlayer> staticPlayerList;
 
     public GameServer(int port) 
     {
@@ -27,17 +28,19 @@ public class GameServer implements Runnable, IServer
         newPointList.add(new Point(452,485));
         newPointList.add(new Point(460,485));
         newPointList.add(new Point(468,485));
+        staticPlayerList = new ArrayList<IPlayer>();
         init();
     }
     
     public IPlayer[] getClients()
     {
-    	IPlayer[] list = new IPlayer[playerList.size()];
-    	for(int i = 0; i < playerList.size(); i++){
-    		list[i] = playerList.poll();
-    		playerList.add(list[i]);
-    	}
-    	return list;
+//    	IPlayer[] list = new IPlayer[playerList.size()];
+  //  	for(int i = 0; i < playerList.size(); i++){
+    //		list[i] = playerList.poll();
+    //		playerList.add(list[i]);
+    //	}
+    
+    	return staticPlayerList.toArray(new IPlayer[]{});
     }
     
     public void broadcast(String data)
@@ -76,6 +79,7 @@ public class GameServer implements Runnable, IServer
     			playerList.add(player);
     			System.out.println("@GameServer remove method- the size of playerList" + tempIdForPlayer);
     			this.addListeners(player);
+    			staticPlayerList.add(player);
     			if(tempIdForPlayer==0){
     				player.setTurn(true);
     			}
@@ -150,6 +154,13 @@ public class GameServer implements Runnable, IServer
     public IPropertyCard getCardAt(int i){ return propertyList.get(i); }
 	public IPlayer getNext(){
 		 IPlayer temp = playerList.poll();
+		 IPlayer temp2;
+		 if(playerList.size()>1)	{
+		 	temp2 = playerList.poll();
+		 	playerList.add(temp);
+		 	playerList.add(temp2);
+		 	return temp2;
+		 }
 		 playerList.add(temp);
 		 return temp; 
 	}

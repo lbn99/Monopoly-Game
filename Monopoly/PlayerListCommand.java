@@ -11,11 +11,11 @@ class PlayerListCommand extends NetworkListenerAdapter
 			String ret = "LIST ";
 			IPlayer[] playerList = server.getClients();
 			for(int i = 0; i < playerList.length; i++){
-				ret +="[Player"+playerList[i].getId()+","+playerList[i].getMoney()+",";
+				ret +="["+playerList[i].getHandle()+","+playerList[i].getMoney();
 				IPropertyCard[] cards = playerList[i].getCards();
 				for(int j = 0; j < playerList[i].getCards().length; j++){
 					System.out.println(">>>>> RET in the Playerlist command is " + ret);
-					ret+=cards[j].getName()+","+cards[j].getCost()+","+cards[j].getRent();
+					ret+=","+cards[j].getName()+","+cards[j].getCost()+","+cards[j].getRent()";
 				}
 				ret+= "]-";
 			}

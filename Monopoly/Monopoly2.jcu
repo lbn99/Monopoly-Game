@@ -8,9 +8,6 @@
 		<project>
 			<label>Monopoly</label>
 			<showfiles>false</showfiles>
-			<folderitem>
-				<path>classes</path>
-			</folderitem>
 		</project>
 	</projects>
 </workspace_user>
