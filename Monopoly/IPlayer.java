@@ -72,5 +72,11 @@ public interface IPlayer
 	//this sets the new card number
 	public void setCardOn(int i);
 
+	//this checks if the player has already rolled or not
+	public void setOnceRolled(boolean b);
+
+	//this returns if the player has already rolled or not
+	public boolean getOnceRolled();
+
 	//each player would have a IPiece which would repesent each player on the board and will have the same position
 }

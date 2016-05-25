@@ -19,6 +19,7 @@ public class ServerSidePlayer implements Runnable, IPlayer
 	private int xpos;
 	private int ypos;
     private int cardOn;
+    private boolean rolledOnce;
 	
     public ServerSidePlayer(int id, IServer server, Socket socket, int x, int y) throws IOException
     {
@@ -32,6 +33,7 @@ public class ServerSidePlayer implements Runnable, IPlayer
     	xpos = x;
     	ypos = y;
         cardOn = 0;
+        rolledOnce = false;
     	in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
     	out = new PrintWriter(socket.getOutputStream(), true);
     	listenerList = new ArrayList<INetworkListener>();
@@ -169,5 +171,13 @@ public class ServerSidePlayer implements Runnable, IPlayer
     //this sets the new card number
     public void setCardOn(int i){
         this.cardOn = i;
+    }
+
+    public void setOnceRolled(boolean b){
+        this.rolledOnce = b;    
+    }
+
+    public boolean getOnceRolled(){
+        return this.rolledOnce;
     }
 }

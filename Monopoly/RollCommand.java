@@ -6,15 +6,18 @@ class RollCommand extends NetworkListenerAdapter
 	//receive from server
 	public void process(String message, IPlayer player, IServer server)
 	{
-		if(isCommand(message, COMMAND)&& player.getTurn())
+		if(isCommand(message, COMMAND)&& player.getTurn()&&!player.getOnceRolled())
 		{
 			System.out.println("@RollCommand");
 			//roll and move process code goes here
 			int x = (int)(player.getLocation().getX());
 			int y = (int)(player.getLocation().getY());
-			int move = Integer.parseInt(message.substring(5,6)) + Integer.parseInt(message.substring(7,8));
+			int roll1 = Integer.parseInt(message.substring(5,6));
+			int roll2 = Integer.parseInt(message.substring(7,8));
+			int move =  roll1 + roll2;
 			int newPosition  = player.getCardOn() + move;
 			if(newPosition>39){ newPosition -=40;}
+			if(roll1!=roll2){player.setOnceRolled(true);}
 			player.setCardOn(newPosition);
 			IPropertyCard landedOn = server.getCardAt(newPosition);
 			int newx = 0;

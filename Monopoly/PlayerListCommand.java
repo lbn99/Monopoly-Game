@@ -14,7 +14,6 @@ class PlayerListCommand extends NetworkListenerAdapter
 				ret +="[Player"+playerList[i].getId()+","+playerList[i].getMoney()+",";
 				IPropertyCard[] cards = playerList[i].getCards();
 				for(int j = 0; j < playerList[i].getCards().length; j++){
-					System.out.println(">>>>> RET in the Playerlist command is " + ret);
 					ret+=cards[j].getName()+","+cards[j].getCost()+","+cards[j].getRent();
 				}
 				ret+= "]-";

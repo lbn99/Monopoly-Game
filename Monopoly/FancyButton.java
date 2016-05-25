@@ -45,17 +45,16 @@ public class FancyButton
     //		or when a checkbox is checked, etc...
     public void actionPerformed(ActionEvent e)
     {
-    	Random rand = new Random();
-    	int roll = rand.nextInt(6) + 1;
+    	int roll = (int)(Math.random() * 5) + 1;
     	switch(roll){
     		case 1: diceA.setIcon(a1); break;
-    		case 2: diceA.setIcon(a2); break;
+       		case 2: diceA.setIcon(a2); break;
 	    	case 3: diceA.setIcon(a3); break;
 	    	case 4: diceA.setIcon(a4); break;
 	    	case 5: diceA.setIcon(a5); break;
 	    	case 6: diceA.setIcon(a6); break;
     	}
-    	int roll2 = rand.nextInt(6) + 1;
+    	int roll2 = (int)(Math.random() * 5) + 1;
     	switch(roll2){
     		case 1: diceB.setIcon(a1); break;
     		case 2: diceB.setIcon(a2); break;
@@ -65,12 +64,12 @@ public class FancyButton
 	    	case 6: diceB.setIcon(a6); break;
     	}
     	int move = roll + roll2;
+        System.out.println("PC> @FancyButton the roll"+roll+ "and roll2"+roll2);
     	client.send("ROLL " + roll + " " + roll2);
     	
     	if(roll == roll2)
     	{
     		message.setText("");
     	}
-    		
     }
 }

@@ -12,6 +12,7 @@ class EndTurnCommand extends NetworkListenerAdapter
 				//End Turn process code goes here
 				player.setTurn(false);
 				server.getNext().setTurn(true);
+				player.setOnceRolled(false);
 			}
 		}
 	}
