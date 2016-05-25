@@ -11,8 +11,11 @@ class EndTurnCommand extends NetworkListenerAdapter
 			if(player.getTurn()){
 				//End Turn process code goes here
 				player.setTurn(false);
-				server.getNext().setTurn(true);
 				player.setOnceRolled(false);
+				IPlayer temp = server.getNext();
+				temp.setTurn(true);
+				server.broadcast("UPDATE " + player.getHandle() + "'s turn is over. It is now " + temp.getHandle() + "'s turn");
+
 			}
 		}
 	}
